@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hospital_management_app/screens/auth/auth.dart';
+import 'package:hospital_management_app/screens/auth/login.dart';
 import 'package:hospital_management_app/screens/splash.dart';
 import 'package:hospital_management_app/services/networkEngine.dart';
 
@@ -16,7 +17,7 @@ void main() async {
   //Needs to be updated while changing flavours
   NetworkEngine.baseUrl = "  "; //TODO
 
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
   // Instantiate Service Locator
   await servicesSetup();
   runApp(MyApp());
@@ -36,9 +37,10 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
         primarySwatch: Colors.blue,
+        primaryColor: Color(0xFF2684fe),
         textTheme: GoogleFonts.muliTextTheme(),
       ),
-      home: AuthScreen(),
+      home: Login(),
     );
   }
 }

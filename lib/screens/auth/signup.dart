@@ -1,25 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:hospital_management_app/screens/auth/signup.dart';
 
-class Login extends StatefulWidget {
+class SignUp extends StatefulWidget {
   @override
-  _LoginState createState() => _LoginState();
+  _SignUpState createState() => _SignUpState();
 }
 
-class _LoginState extends State<Login> {
+class _SignUpState extends State<SignUp> {
+  TextEditingController _username;
   TextEditingController _email;
   TextEditingController _password;
+  TextEditingController _confirmPassword;
   bool obscure = true;
+  bool confirmObscure = true;
   final _formKey = GlobalKey<FormState>();
   final _key = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
+    _username = TextEditingController(text: "");
     _email = TextEditingController(text: "");
     _password = TextEditingController(text: "");
+    _confirmPassword = TextEditingController(text: "");
   }
 
   @override
@@ -61,20 +65,20 @@ class _LoginState extends State<Login> {
                       borderRadius: BorderRadius.circular(8)),
                   elevation: 5,
                   child: Column(
-                    // mainAxisSize: MainAxisSize.min,
+                    mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
                           padding: const EdgeInsets.fromLTRB(28.0, 30, 0, 0),
                           child: Text(
-                            "Welcome back !",
+                            "SIGN UP",
                             style: GoogleFonts.openSans(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           )),
                       Padding(
                           padding: const EdgeInsets.fromLTRB(28.0, 15, 0, 0),
                           child: Text(
-                            "Sign in using your email and password",
+                            "Create new account using your email",
                             style: GoogleFonts.openSans(
                                 color: Color(0xFF575563),
                                 fontSize: 12,
@@ -83,6 +87,35 @@ class _LoginState extends State<Login> {
                       SizedBox(
                         height: 20,
                       ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 16, right: 16),
+                        child: TextFormField(
+                          controller: _username,
+                          validator: (value) =>
+                              (value.isEmpty) ? "Please Enter Username" : null,
+                          style: GoogleFonts.openSans(fontSize: 14),
+                          decoration: InputDecoration(
+                              contentPadding: EdgeInsets.only(
+                                left: 24,
+                              ),
+                              hintText: "Confirm Password",
+                              hintStyle: GoogleFonts.openSans(
+                                  color: Color(0XFFA0A0A0), fontSize: 14),
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Color(0xFFF6F6F6)),
+                                  borderRadius: BorderRadius.circular(8)),
+                              focusedBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Color(0xFFF6F6F6)),
+                                  borderRadius: BorderRadius.circular(8)),
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Color(0xFFF6F6F6), width: 1.0),
+                                  borderRadius: BorderRadius.circular(8))),
+                        ),
+                      ),
+                      SizedBox(height: 25),
                       Padding(
                         padding: const EdgeInsets.only(left: 16, right: 16),
                         child: TextFormField(
@@ -123,7 +156,7 @@ class _LoginState extends State<Login> {
                                   borderRadius: BorderRadius.circular(8))),
                         ),
                       ),
-                      SizedBox(height: 33),
+                      SizedBox(height: 25),
                       Padding(
                         padding: const EdgeInsets.only(left: 16, right: 16),
                         child: TextFormField(
@@ -169,8 +202,51 @@ class _LoginState extends State<Login> {
                                   borderRadius: BorderRadius.circular(8))),
                         ),
                       ),
+                      SizedBox(height: 25),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 16, right: 16),
+                        child: TextFormField(
+                          controller: _confirmPassword,
+                          obscureText: confirmObscure,
+                          validator: (value) => (value.isEmpty)
+                              ? "Please Enter Confirm Password"
+                              : null,
+                          style: GoogleFonts.openSans(fontSize: 14),
+                          decoration: InputDecoration(
+                              suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    confirmObscure = !confirmObscure;
+                                  });
+                                },
+                                icon: Icon(
+                                  Icons.remove_red_eye,
+                                  size: 20,
+                                  color: Color(0xFFB1B1B1),
+                                ),
+                              ),
+                              contentPadding: EdgeInsets.only(
+                                left: 24,
+                              ),
+                              hintText: "Confirm Password",
+                              hintStyle: GoogleFonts.openSans(
+                                  color: Color(0XFFA0A0A0), fontSize: 14),
+                              enabledBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Color(0xFFF6F6F6)),
+                                  borderRadius: BorderRadius.circular(8)),
+                              focusedBorder: OutlineInputBorder(
+                                  borderSide:
+                                      BorderSide(color: Color(0xFFF6F6F6)),
+                                  borderRadius: BorderRadius.circular(8)),
+                              border: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Color(0xFFF6F6F6), width: 1.0),
+                                  borderRadius: BorderRadius.circular(8))),
+                        ),
+                      ),
                       SizedBox(
-                        height: 48,
+                        height: 30,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 16, right: 15),
@@ -189,7 +265,7 @@ class _LoginState extends State<Login> {
                             // }
                           },
                           child: Text(
-                            "Sign in",
+                            "Submit",
                             style: GoogleFonts.openSans(
                                 fontSize: 16,
                                 color: Colors.white,
@@ -197,19 +273,6 @@ class _LoginState extends State<Login> {
                           ),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(20)),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 32,
-                      ),
-                      Center(
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Text("Forgot Password ?",
-                              style: GoogleFonts.openSans(
-                                  color: Color(0xFF575563),
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.w400)),
                         ),
                       ),
                       Spacer(),
@@ -220,7 +283,7 @@ class _LoginState extends State<Login> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                "Don’t have an account?",
+                                "Already have an account ?",
                                 style: GoogleFonts.openSans(
                                   fontSize: 16,
                                 ),
@@ -228,13 +291,9 @@ class _LoginState extends State<Login> {
                               InkWell(
                                 splashColor: Colors.white,
                                 onTap: () {
-                                  // TODO : Push Name
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => SignUp()));
+                                  Navigator.pop(context);
                                 },
-                                child: Text(" Sign Up!",
+                                child: Text(" Sign in!",
                                     style: GoogleFonts.openSans(
                                         fontSize: 16,
                                         fontWeight: FontWeight.w800,
@@ -257,8 +316,10 @@ class _LoginState extends State<Login> {
 
   @override
   void dispose() {
+    _username.dispose();
     _email.dispose();
     _password.dispose();
+    _confirmPassword.dispose();
     super.dispose();
   }
 }

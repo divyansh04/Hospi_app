@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:hospital_management_app/models/http_exception.dart';
+import 'package:hospital_management_app/provider/auth.dart';
 import 'package:hospital_management_app/screens/auth/signup.dart';
+import 'package:hospital_management_app/screens/home.dart';
+import 'package:provider/provider.dart';
 
 class Login extends StatefulWidget {
+  static const routeName = '/login';
   @override
   _LoginState createState() => _LoginState();
 }
@@ -14,6 +19,7 @@ class _LoginState extends State<Login> {
   bool obscure = true;
   final _formKey = GlobalKey<FormState>();
   final _key = GlobalKey<ScaffoldState>();
+  var _isLoading = false;
 
   @override
   void initState() {
@@ -173,32 +179,31 @@ class _LoginState extends State<Login> {
                         height: 48,
                       ),
                       Padding(
-                        padding: const EdgeInsets.only(left: 16, right: 15),
-                        child: MaterialButton(
-                          color: Theme.of(context).primaryColor,
-                          height: 55,
-                          minWidth: MediaQuery.of(context).size.width - 75,
-                          onPressed: () async {
-                            _formKey.currentState.validate();
-                            // if (_formKey.currentState.validate()) {
-                            //   if (!await user.signIn(
-                            //       _email.text, _password.text))
-                            //     _key.currentState.showSnackBar(SnackBar(
-                            //       content: Text("Something went wrong"),
-                            //     ));
-                            // }
-                          },
-                          child: Text(
-                            "Sign in",
-                            style: GoogleFonts.openSans(
-                                fontSize: 16,
-                                color: Colors.white,
-                                fontWeight: FontWeight.w700),
-                          ),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                        ),
-                      ),
+                          padding: const EdgeInsets.only(left: 16, right: 15),
+                          child: _isLoading
+                              ? Center(
+                                  child: CircularProgressIndicator(
+                                      color: Theme.of(context).primaryColor))
+                              : MaterialButton(
+                                  color: Theme.of(context).primaryColor,
+                                  height: 55,
+                                  minWidth:
+                                      MediaQuery.of(context).size.width - 75,
+                                  onPressed: () async {
+                                    if (_formKey.currentState.validate()) {
+                                      _submit();
+                                    }
+                                  },
+                                  child: Text(
+                                    "Sign in",
+                                    style: GoogleFonts.openSans(
+                                        fontSize: 16,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w700),
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(20)),
+                                )),
                       SizedBox(
                         height: 32,
                       ),
@@ -228,11 +233,8 @@ class _LoginState extends State<Login> {
                               InkWell(
                                 splashColor: Colors.white,
                                 onTap: () {
-                                  // TODO : Push Name
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => SignUp()));
+                                  Navigator.pushNamed(
+                                      context, SignUp.routeName);
                                 },
                                 child: Text(" Sign Up!",
                                     style: GoogleFonts.openSans(
@@ -253,6 +255,63 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+  }
+
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: Text('An Error Occurred!'),
+        content: Text(message),
+        actions: <Widget>[
+          MaterialButton(
+            child: Text('Okay'),
+            onPressed: () {
+              Navigator.of(ctx).pop();
+            },
+          )
+        ],
+      ),
+    );
+  }
+
+  Future<void> _submit() async {
+    if (!_formKey.currentState.validate()) {
+      // Invalid!
+      return;
+    }
+    _formKey.currentState.save();
+    setState(() {
+      _isLoading = true;
+    });
+    try {
+      await Provider.of<Auth>(context).login(
+        _email.text,
+        _password.text,
+      );
+      Navigator.of(context).pushReplacementNamed('/');
+    } on HttpException catch (error) {
+      var errorMessage = 'Authentication failed';
+      if (error.toString().contains('EMAIL_EXISTS')) {
+        errorMessage = 'This email address is already in use.';
+      } else if (error.toString().contains('INVALID_EMAIL')) {
+        errorMessage = 'This is not a valid email address';
+      } else if (error.toString().contains('WEAK_PASSWORD')) {
+        errorMessage = 'This password is too weak.';
+      } else if (error.toString().contains('EMAIL_NOT_FOUND')) {
+        errorMessage = 'Could not find a user with that email.';
+      } else if (error.toString().contains('INVALID_PASSWORD')) {
+        errorMessage = 'Invalid password.';
+      }
+      _showErrorDialog(errorMessage);
+    } catch (error) {
+      const errorMessage = 'Could not authenticate . Please try again later.';
+      _showErrorDialog(errorMessage);
+    }
+
+    setState(() {
+      _isLoading = false;
+    });
   }
 
   @override

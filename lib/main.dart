@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,19 +13,16 @@ import 'package:hospital_management_app/screens/home.dart';
 import 'package:hospital_management_app/services/networkEngine.dart';
 import 'package:provider/provider.dart';
 
-import 'services/serviceLocator.dart';
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //Set rotation
   await SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   //Needs to be updated while changing flavours
-  NetworkEngine.baseUrl = "  "; //TODO
+  NetworkEngine.baseUrl = ""; //TODO
 
-  // await Firebase.initializeApp();
-  // Instantiate Service Locator
-  await servicesSetup();
+  await Firebase.initializeApp();
+
 
   runApp(MyApp());
 }

@@ -16,7 +16,7 @@ class NetworkEngine {
 
   Dio get dio {
     BaseOptions options = new BaseOptions(
-      baseUrl: baseUrl,
+      // baseUrl: baseUrl,
       connectTimeout: 120000,
       receiveTimeout: 120000,
     );

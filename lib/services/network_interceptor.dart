@@ -5,13 +5,6 @@ class NetworkInterceptors extends Interceptor {
   Future<dynamic> onRequest(RequestOptions options) async {
     String endpoint = options.path;
     print("Request: $endpoint\n<-- ${options.data}");
-    // // print("<-- ${options.queryParameters}");
-    // final user = sl.get<UserService>().user;
-    // if (user != null) {
-    //   IdTokenResult authToken = await user.getIdTokenResult();
-    //   //breakpoint
-    //   options.headers['AUTH_TOKEN'] = authToken.token
-    // }
     return options;
   }
 

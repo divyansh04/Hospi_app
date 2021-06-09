@@ -51,7 +51,7 @@ class _SignUpState extends State<SignUp> {
                   color: Colors.blue.shade200,
                   child: SvgPicture.asset('assets/doc.svg')),
               Positioned.fill(
-                top: 300,
+                top: 350,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10.0),
                   child: Container(
@@ -61,14 +61,14 @@ class _SignUpState extends State<SignUp> {
                 ),
               ),
               new Positioned.fill(
-                top: 300.0,
+                top: 275.0,
                 left: 20,
                 right: 19,
                 bottom: 40,
                 child: Card(
                   semanticContainer: false,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
+                      borderRadius: BorderRadius.circular(30)),
                   elevation: 5,
                   child: Column(
                     mainAxisSize: MainAxisSize.min,

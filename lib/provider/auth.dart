@@ -59,9 +59,9 @@ class Auth with ChangeNotifier {
       //   ),
       // );
       final responseData = json.decode(response.data);
-      if (responseData['error'] != null) {
-        throw HttpException(responseData['error']['message']);
-      }
+      // if (responseData['error'] != null) {
+      //   throw HttpException(responseData['error']['message']);
+      // }
       _token = responseData['idToken'];
       _userId = responseData['localId'];
       _expiryDate = DateTime.now().add(

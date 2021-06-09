@@ -51,7 +51,7 @@ class _SignUpState extends State<SignUp> {
                   color: Colors.blue.shade200,
                   child: SvgPicture.asset('assets/doc.svg')),
               Positioned.fill(
-                top: 300,
+                top: 350,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(10.0),
                   child: Container(
@@ -75,14 +75,14 @@ class _SignUpState extends State<SignUp> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
-                          padding: const EdgeInsets.fromLTRB(28.0, 30, 0, 0),
+                          padding: const EdgeInsets.fromLTRB(28, 28, 0, 0),
                           child: Text(
                             "SIGN UP",
                             style: GoogleFonts.openSans(
                                 fontSize: 20, fontWeight: FontWeight.bold),
                           )),
                       Padding(
-                          padding: const EdgeInsets.fromLTRB(28.0, 15, 0, 0),
+                          padding: const EdgeInsets.fromLTRB(28, 15, 0, 0),
                           child: Text(
                             "Create new account using your email",
                             style: GoogleFonts.openSans(
@@ -252,14 +252,15 @@ class _SignUpState extends State<SignUp> {
                         ),
                       ),
                       SizedBox(
-                        height: 30,
+                        height: 24,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 16, right: 15),
                         child: _isLoading
                             ? Center(
                                 child: CircularProgressIndicator(
-                                    color: Theme.of(context).primaryColor))
+                                    // color: Theme.of(context).primaryColor
+                                    ))
                             : MaterialButton(
                                 color: Theme.of(context).primaryColor,
                                 height: 55,

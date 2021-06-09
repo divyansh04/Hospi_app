@@ -21,14 +21,11 @@ void main() async {
   //Needs to be updated while changing flavours
   NetworkEngine.baseUrl = ""; //TODO
 
-  await Firebase.initializeApp();
+  // await Firebase.initializeApp();
 
 
   runApp(MyApp());
 }
-// TODO use api's like this
-// await sl.get<UserService>().getAuthUser();
-// await sl.get<GetDataService>().getData();
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.

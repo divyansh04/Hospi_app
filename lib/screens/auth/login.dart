@@ -183,7 +183,8 @@ class _LoginState extends State<Login> {
                           child: _isLoading
                               ? Center(
                                   child: CircularProgressIndicator(
-                                      color: Theme.of(context).primaryColor))
+                                      // color: Theme.of(context).primaryColor
+                                      ))
                               : MaterialButton(
                                   color: Theme.of(context).primaryColor,
                                   height: 55,

@@ -12,13 +12,13 @@ String appointmentModelToJson(AppointmentModel data) =>
 
 class AppointmentModel {
   AppointmentModel(
-      {this.id, this.name, this.age, this.gender, this.appointmentDate});
+      {this.id, this.name, this.age, this.gender, this.date});
 
   String id;
   String name;
   String age;
   String gender;
-  DateTime appointmentDate;
+  DateTime date;
 
   factory AppointmentModel.fromJson(Map<String, dynamic> json) =>
       AppointmentModel(
@@ -26,7 +26,7 @@ class AppointmentModel {
         name: json["name"],
         age: json["age"],
         gender: json["gender"],
-        appointmentDate: json["appointmentDate"] == null
+        date: json["date"] == null
             ? null
             : DateTime.parse(json['time'] as String),
       );
@@ -36,6 +36,6 @@ class AppointmentModel {
         "name": name,
         "age": age,
         "gender": gender,
-        "appointmentDate": appointmentDate?.toIso8601String(),
+        "date": date?.toIso8601String(),
       };
 }

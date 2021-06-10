@@ -14,10 +14,10 @@ class Test extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     appointmentList
-        .sort((a, b) => a.appointmentDate.compareTo(b.appointmentDate));
+        .sort((a, b) => a.date.compareTo(b.date));
 
     appointmentList.forEach((element) {
-      date = DateFormat('dd MMM yyyy').format(element.appointmentDate);
+      date = DateFormat('dd MMM yyyy').format(element.date);
       if (appointmentsMap[date] == null) {
         appointmentsMap[date] = [];
         appointmentsMap[date].add(element);

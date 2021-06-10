@@ -40,28 +40,28 @@ class Auth with ChangeNotifier {
     final url =
         'https://identitytoolkit.googleapis.com/v1/accounts:$urlSegment?key=AIzaSyBeKucTsXcuuQXuLRp3jWtdchACuZz7kOQ';
     try {
-      final response = await NetworkEngine().dio.post(
-        url,
-        data: {
-          'email': email,
-          'password': password,
-          'returnSecureToken': true,
-        },
-      );
-      // final response = await http.post(
+      // final response = await NetworkEngine().dio.post(
       //   url,
-      //   body: json.encode(
-      //     {
-      //       'email': email,
-      //       'password': password,
-      //       'returnSecureToken': true,
-      //     },
-      //   ),
+      //   data: {
+      //     'email': email,
+      //     'password': password,
+      //     'returnSecureToken': true,
+      //   },
       // );
-      final responseData = json.decode(response.data);
-      // if (responseData['error'] != null) {
-      //   throw HttpException(responseData['error']['message']);
-      // }
+      final response = await http.post(
+        url,
+        body: json.encode(
+          {
+            'email': email,
+            'password': password,
+            'returnSecureToken': true,
+          },
+        ),
+      );
+      final responseData = json.decode(response.body);
+      if (responseData['error'] != null) {
+        throw HttpException(responseData['error']['message']);
+      }
       _token = responseData['idToken'];
       _userId = responseData['localId'];
       _expiryDate = DateTime.now().add(

@@ -64,7 +64,7 @@ class _LoginState extends State<Login> {
                 child: Card(
                   semanticContainer: false,
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
+                      borderRadius: BorderRadius.circular(30)),
                   elevation: 5,
                   child: Column(
                     // mainAxisSize: MainAxisSize.min,

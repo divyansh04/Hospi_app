@@ -4,25 +4,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hospital_management_app/provider/auth.dart';
+import 'package:hospital_management_app/provider/patients.dart';
 // import 'package:hospital_management_app/screens/auth/auth.dart';
 import 'package:hospital_management_app/screens/auth/login.dart';
 import 'package:hospital_management_app/screens/auth/signup.dart';
 import 'package:hospital_management_app/screens/home.dart';
+import 'package:hospital_management_app/screens/patientslist.dart';
 // import 'package:hospital_management_app/screens/auth/signup.dart';
 // import 'package:hospital_management_app/screens/splash.dart';
 import 'package:hospital_management_app/services/networkEngine.dart';
 import 'package:provider/provider.dart';
+
+import 'screens/appointments_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //Set rotation
   await SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
-  //Needs to be updated while changing flavours
+
   NetworkEngine.baseUrl = ""; //TODO
 
   // await Firebase.initializeApp();
-
 
   runApp(MyApp());
 }
@@ -32,7 +35,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [ChangeNotifierProvider(create: (context) => Auth())],
+        providers: [
+          ChangeNotifierProvider(
+            create: (context) => Auth(),
+          ),
+          ChangeNotifierProvider<Patients>(
+            create: (context) => Patients(),
+          )
+        ],
         child: Consumer<Auth>(
           builder: (context, Auth auth, _) => MaterialApp(
               title: 'Material App',
@@ -43,11 +53,13 @@ class MyApp extends StatelessWidget {
                 primaryColor: Color(0xFF2684fe),
                 textTheme: GoogleFonts.muliTextTheme(),
               ),
-              home: auth.isAuth ? HomeScreen() : Login(),
+              home: HomeScreen(),
               routes: {
                 Login.routeName: (context) => Login(),
                 SignUp.routeName: (context) => SignUp(),
                 HomeScreen.routeName: (context) => HomeScreen(),
+                PatientScreen.routeName: (context) => PatientScreen(),
+                AppointmentScreen.routeName: (context) => AppointmentScreen(),
               }
               // TODO : Add Routes
               ),

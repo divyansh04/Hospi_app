@@ -62,6 +62,11 @@ class Auth with ChangeNotifier {
       if (responseData['error'] != null) {
         throw HttpException(responseData['error']['message']);
       }
+      // final responseData = json.decode(response.data);
+      print("####$responseData");
+      // if (responseData['error'] != null) {
+      //   throw HttpException(responseData['error']['message']);
+      // }
       _token = responseData['idToken'];
       _userId = responseData['localId'];
       _expiryDate = DateTime.now().add(

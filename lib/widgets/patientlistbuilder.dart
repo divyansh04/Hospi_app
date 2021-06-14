@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../provider/patients.dart';
+import 'package:hospital_management_app/models/patient_model.dart';
 
 class PatientListBuilder extends StatelessWidget {
   @required
-  List<Patient> displayPatients;
+  final List<Patient> displayPatients;
   PatientListBuilder(this.displayPatients);
 
   @override

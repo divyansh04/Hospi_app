@@ -16,7 +16,7 @@ class Appointments with ChangeNotifier {
   }
 
   Future<void> fetchAppointments() async {
-    final url = "https://hospiti.pythonanywhere.com/api/patients/";
+    final url = "https://hospiti.pythonanywhere.com/api/appointments/";
     List<AppointmentModel> loadedAppointments = [];
     try {
       final response = await NetworkEngine().dio.get(url);
@@ -32,8 +32,7 @@ class Appointments with ChangeNotifier {
     }
   }
 
-  Map<String, List<AppointmentModel>> fetchAppointmentsMap(
-      ) {
+  Map<String, List<AppointmentModel>> fetchAppointmentsMap() {
     Map<String, List<AppointmentModel>> _appointmentsMap = {};
     String date;
     this.appointments.sort((a, b) => a.date.compareTo(b.date));

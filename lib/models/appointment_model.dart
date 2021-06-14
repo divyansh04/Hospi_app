@@ -41,7 +41,7 @@ class AppointmentModel {
         patientid: json["patientid"],
         date: json["date"] == null
             ? null
-            : DateTime.parse(json['time'] as String),
+            : DateTime.parse(json['date'] as String),
       );
 
   Map<String, dynamic> toJson() => {

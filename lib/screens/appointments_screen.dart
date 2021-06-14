@@ -3,8 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hospital_management_app/models/appointment_model.dart';
 import 'package:hospital_management_app/provider/appointments.dart';
 import 'package:hospital_management_app/widgets/drawer.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
 
 class AppointmentScreen extends StatefulWidget {
   static const routeName = '/AppointmentsList';
@@ -50,32 +50,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
       drawer: AppDrawer(),
       body: ListView(
         children: [
-          // Padding(
-          //   padding: const EdgeInsets.all(15.0),
-          //   child: TextField(
-          //     onChanged: (searchKey) {
-          //       setState(() {
-          //         displayPatients = patientsList.where((element) {
-          //           String patientName = element.name.toLowerCase();
-          //           return patientName.contains(searchKey.toLowerCase());
-          //         }).toList();
-          //       });
-          //     },
-          //     decoration: InputDecoration(
-          //         contentPadding: EdgeInsets.only(
-          //           left: 24,
-          //           top: 16,
-          //           bottom: 15,
-          //         ),
-          //         hintText: "Search Patient",
-          //         hintStyle: GoogleFonts.openSans(
-          //             color: Color(0XFFA0A0A0), fontSize: 16),
-          //         border: OutlineInputBorder(
-          //             borderSide:
-          //                 BorderSide(color: Color(0xFFF6F6F6), width: 1.0),
-          //             borderRadius: BorderRadius.circular(20))),
-          //   ),
-          // ),
+          // Add Filter Widget
           // SizedBox(height: 5.0),
           _isLoading
               ? Center(
@@ -102,6 +77,7 @@ class AppointmentsListBuilder extends StatelessWidget {
     return ListView.builder(
         physics: ClampingScrollPhysics(),
         shrinkWrap: true,
+        reverse: true,
         padding: EdgeInsets.all(8.0),
         itemCount: appointmentsMap.length,
         itemBuilder: (_, int dateIndex) {
@@ -112,10 +88,10 @@ class AppointmentsListBuilder extends StatelessWidget {
             physics: ClampingScrollPhysics(),
             shrinkWrap: true,
             children: [
-              Center(
-                child: Container(
-                  child: Text(date),
-                ),
+              Container(
+                child: Text(date,
+                    style: GoogleFonts.openSans(
+                        fontSize: 20, fontWeight: FontWeight.w600)),
               ),
               ListView.builder(
                   shrinkWrap: true,
@@ -124,7 +100,35 @@ class AppointmentsListBuilder extends StatelessWidget {
                   itemCount: appointment.length,
                   itemBuilder: (_, int index2) {
                     AppointmentModel appointmentDetail = appointment[index2];
-                    return Text(appointmentDetail.patientName);
+                    return Card(
+                      elevation: 2.5,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20.0),
+                      ),
+                      child: ListTile(
+                        contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                        onTap: () {
+                          print('###TAPPED: ${appointmentDetail.id}###');
+                        },
+                        leading: Icon(
+                          Icons.person,
+                          size: 30,
+                        ),
+                        title: Text(appointmentDetail.patientName,
+                            style: GoogleFonts.openSans(
+                                fontSize: 20, fontWeight: FontWeight.w600)),
+                        subtitle: Row(
+                          children: [
+                            Text("Time: "),
+                            Text(
+                                DateFormat.Hm().format(appointmentDetail.date)),
+                            Spacer(),
+                            Text("Amount :  "),
+                            Text(appointmentDetail.amount.toString()),
+                          ],
+                        ),
+                      ),
+                    );
                   }),
             ],
           );

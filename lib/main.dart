@@ -9,12 +9,13 @@ import 'package:hospital_management_app/provider/patients.dart';
 import 'package:hospital_management_app/screens/auth/login.dart';
 import 'package:hospital_management_app/screens/auth/signup.dart';
 import 'package:hospital_management_app/screens/home.dart';
-import 'package:hospital_management_app/screens/patientslist.dart';
+import 'package:hospital_management_app/screens/patients_screen.dart';
 // import 'package:hospital_management_app/screens/auth/signup.dart';
 // import 'package:hospital_management_app/screens/splash.dart';
 import 'package:hospital_management_app/services/networkEngine.dart';
 import 'package:provider/provider.dart';
 
+import 'provider/appointments.dart';
 import 'screens/appointments_screen.dart';
 
 void main() async {
@@ -41,6 +42,9 @@ class MyApp extends StatelessWidget {
           ),
           ChangeNotifierProvider<Patients>(
             create: (context) => Patients(),
+          ),
+          ChangeNotifierProvider<Appointments>(
+            create: (context) => Appointments(),
           )
         ],
         child: Consumer<Auth>(

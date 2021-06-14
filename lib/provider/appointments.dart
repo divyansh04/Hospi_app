@@ -2,49 +2,51 @@ import 'package:flutter/material.dart';
 import 'package:hospital_management_app/models/appointment_model.dart';
 import 'package:hospital_management_app/services/networkEngine.dart';
 
-class Appointments with ChangeNotifier {
-  List _patients = [];
+import 'package:intl/intl.dart';
 
-  List<AppointmentModel> get patients {
-    return [..._patients];
+class Appointments with ChangeNotifier {
+  List _appointments = [];
+
+  List<AppointmentModel> get appointments {
+    return [..._appointments];
   }
 
   AppointmentModel findbyId(String id) {
-    return _patients.firstWhere((element) => element.id == id);
+    return _appointments.firstWhere((element) => element.id == id);
   }
 
-  Future<void> fetchPatients() async {
-    // List<Patient> mockPatients = [
-    //   new Patient(
-    //       address: "Near Madhu Hotel",
-    //       age: 78,
-    //       gender: "MALE",
-    //       id: "ill man1622744854",
-    //       name: "ill man",
-    //       phone: "7458963210"),
-    //   new Patient(
-    //       address: "Yamuna Nagar",
-    //       age: 41,
-    //       gender: "Male",
-    //       id: "first",
-    //       name: "someone",
-    //       phone: "4125638549")
-    // ];
-    // _patients = mockPatients;
-
+  Future<void> fetchAppointments() async {
     final url = "https://hospiti.pythonanywhere.com/api/patients/";
-    List<AppointmentModel> loadedPatients = [];
+    List<AppointmentModel> loadedAppointments = [];
     try {
       final response = await NetworkEngine().dio.get(url);
       List<dynamic> data = response.data;
 
       data.forEach((element) {
-        loadedPatients.add(AppointmentModel.fromJson(element));
+        loadedAppointments.add(AppointmentModel.fromJson(element));
       });
-      _patients = loadedPatients;
+      _appointments = loadedAppointments;
       notifyListeners();
     } catch (error) {
       throw (error);
     }
+  }
+
+  Map<String, List<AppointmentModel>> fetchAppointmentsMap(
+      ) {
+    Map<String, List<AppointmentModel>> _appointmentsMap = {};
+    String date;
+    this.appointments.sort((a, b) => a.date.compareTo(b.date));
+
+    this.appointments.forEach((element) {
+      date = DateFormat('dd MMM yyyy').format(element.date);
+      if (_appointmentsMap[date] == null) {
+        _appointmentsMap[date] = [];
+        _appointmentsMap[date].add(element);
+      } else {
+        _appointmentsMap[date].add(element);
+      }
+    });
+    return _appointmentsMap;
   }
 }

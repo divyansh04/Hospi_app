@@ -1,49 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:hospital_management_app/models/patient_model.dart';
 import 'package:hospital_management_app/services/networkEngine.dart';
 import 'package:http/http.dart' as http;
 // import '../models/http_exception.dart';
-
-Patient patientFromJson(String str) => Patient.fromJson(json.decode(str));
-
-String patientToJson(Patient data) => json.encode(data.toJson());
-
-class Patient {
-  Patient({
-    this.id,
-    this.name,
-    this.gender,
-    this.age,
-    this.phone,
-    this.address,
-  });
-
-  String id;
-  String name;
-  String gender;
-  int age;
-  int phone;
-  String address;
-
-  factory Patient.fromJson(Map<String, dynamic> json) => Patient(
-        id: json["id"],
-        name: json["name"],
-        gender: json["gender"],
-        age: json["age"],
-        phone: json["phone"],
-        address: json["address"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "id": id,
-        "name": name,
-        "gender": gender,
-        "age": age,
-        "phone": phone,
-        "address": address,
-      };
-}
 
 class Patients with ChangeNotifier {
   List _patients = [];

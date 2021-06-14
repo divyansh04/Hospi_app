@@ -11,31 +11,47 @@ String appointmentModelToJson(AppointmentModel data) =>
     json.encode(data.toJson());
 
 class AppointmentModel {
-  AppointmentModel(
-      {this.id, this.name, this.age, this.gender, this.date});
+  AppointmentModel({
+    this.ailment,
+    this.date,
+    this.amount,
+    this.doctorName,
+    this.doctorid,
+    this.id,
+    this.patientName,
+    this.patientid,
+  });
 
-  String id;
-  String name;
-  String age;
-  String gender;
   DateTime date;
-
+  String ailment;
+  int amount;
+  String doctorName;
+  String doctorid;
+  String id;
+  String patientName;
+  String patientid;
   factory AppointmentModel.fromJson(Map<String, dynamic> json) =>
       AppointmentModel(
+        ailment: json["ailment"],
+        amount: json["amount"],
+        doctorName: json["doctor name"],
+        doctorid: json["doctorid"],
         id: json["id"],
-        name: json["name"],
-        age: json["age"],
-        gender: json["gender"],
+        patientName: json["patient name"],
+        patientid: json["patientid"],
         date: json["date"] == null
             ? null
             : DateTime.parse(json['time'] as String),
       );
 
   Map<String, dynamic> toJson() => {
+        "ailment": ailment,
+        "amount": amount,
+        "doctor name": doctorName,
+        "doctorid": doctorid,
         "id": id,
-        "name": name,
-        "age": age,
-        "gender": gender,
+        "patient name": patientName,
+        "patientid": patientid,
         "date": date?.toIso8601String(),
       };
 }

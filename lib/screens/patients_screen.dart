@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hospital_management_app/models/patient_model.dart';
 import 'package:hospital_management_app/widgets/patientlistbuilder.dart';
 import '../provider/patients.dart';
 import '../widgets/drawer.dart';
@@ -18,11 +19,6 @@ class _PatientScreenState extends State<PatientScreen> {
   var _isLoading = false;
   List<Patient> patientsList = [];
   List<Patient> displayPatients = [];
-
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   void didChangeDependencies() {

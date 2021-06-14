@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hospital_management_app/provider/auth.dart';
 import 'package:hospital_management_app/screens/appointments_screen.dart';
 import 'package:hospital_management_app/screens/auth/login.dart';
-import 'package:hospital_management_app/screens/patientslist.dart';
+import 'package:hospital_management_app/screens/patients_screen.dart';
 import 'package:provider/provider.dart';
 
 class AppDrawer extends StatelessWidget {

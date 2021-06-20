@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hospital_management_app/models/patient_model.dart';
+import 'package:hospital_management_app/screens/patient_details.dart';
 
 class PatientListBuilder extends StatelessWidget {
   @required
@@ -24,6 +25,11 @@ class PatientListBuilder extends StatelessWidget {
               contentPadding: EdgeInsets.symmetric(horizontal: 20),
               onTap: () {
                 print('###TAPPED: ${displayPatients[index].id}###');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            PatientDetails(patient: displayPatients[index])));
               },
               leading: Icon(
                 Icons.person,

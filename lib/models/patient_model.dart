@@ -26,7 +26,7 @@ class Patient {
         name: json["name"],
         gender: json["gender"],
         age: json["age"],
-        phone: json["phone"],
+        phone: json["phone number"],
         address: json["address"],
       );
 
@@ -35,7 +35,7 @@ class Patient {
         "name": name,
         "gender": gender,
         "age": age,
-        "phone": phone,
+        "phone number": phone,
         "address": address,
       };
 }

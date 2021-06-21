@@ -1,18 +1,15 @@
 import 'dart:io';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hospital_management_app/provider/auth.dart';
-import 'package:hospital_management_app/provider/patients.dart';
-// import 'package:hospital_management_app/screens/auth/auth.dart';
-import 'package:hospital_management_app/screens/auth/login.dart';
-import 'package:hospital_management_app/screens/auth/signup.dart';
-import 'package:hospital_management_app/screens/home.dart';
-import 'package:hospital_management_app/screens/patients_screen.dart';
-// import 'package:hospital_management_app/screens/auth/signup.dart';
-// import 'package:hospital_management_app/screens/splash.dart';
-import 'package:hospital_management_app/services/networkEngine.dart';
+import '../provider/auth.dart';
+import '../provider/patients.dart';
+import '../screens/auth/login.dart';
+import '../screens/auth/signup.dart';
+import '../screens/book_appointment.dart';
+import '../screens/home.dart';
+import '../screens/patients_screen.dart';
+import '../services/networkEngine.dart';
 import 'package:provider/provider.dart';
 
 import 'provider/appointments.dart';
@@ -62,6 +59,7 @@ class MyApp extends StatelessWidget {
                 Login.routeName: (context) => Login(),
                 SignUp.routeName: (context) => SignUp(),
                 HomeScreen.routeName: (context) => HomeScreen(),
+                BookAppointment.routeName: (context) => BookAppointment(),
                 PatientScreen.routeName: (context) => PatientScreen(),
                 AppointmentScreen.routeName: (context) => AppointmentScreen(),
               }

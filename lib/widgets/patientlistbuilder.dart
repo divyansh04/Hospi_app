@@ -6,7 +6,10 @@ import 'package:hospital_management_app/screens/patient_details.dart';
 class PatientListBuilder extends StatelessWidget {
   @required
   final List<Patient> displayPatients;
-  PatientListBuilder(this.displayPatients);
+  @required
+  final bool details;
+
+  PatientListBuilder(this.displayPatients, this.details);
 
   @override
   Widget build(BuildContext context) {
@@ -24,12 +27,14 @@ class PatientListBuilder extends StatelessWidget {
             child: ListTile(
               contentPadding: EdgeInsets.symmetric(horizontal: 20),
               onTap: () {
-                print('###TAPPED: ${displayPatients[index].id}###');
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) =>
-                            PatientDetails(patient: displayPatients[index])));
+                print('### TAPPED: ${displayPatients[index].id} ###');
+                if (details == true) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              PatientDetails(patient: displayPatients[index])));
+                }
               },
               leading: Icon(
                 Icons.person,
@@ -40,7 +45,6 @@ class PatientListBuilder extends StatelessWidget {
                       fontSize: 20, fontWeight: FontWeight.w600)),
               subtitle: Row(
                 children: [
-                  // Text("gender: "),
                   Text(displayPatients[index].gender),
                   Spacer(),
                   Text("Age :  "),

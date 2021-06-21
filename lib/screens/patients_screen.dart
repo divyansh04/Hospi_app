@@ -76,11 +76,8 @@ class _PatientScreenState extends State<PatientScreen> {
             ),
             SizedBox(height: 5.0),
             _isLoading
-                ? Center(
-                    child: CircularProgressIndicator(
-                        // color: Theme.of(context).primaryColor
-                        ))
-                : PatientListBuilder(displayPatients)
+                ? Center(child: CircularProgressIndicator())
+                : PatientListBuilder(displayPatients, true)
           ],
         ));
   }

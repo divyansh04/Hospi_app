@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hospital_management_app/provider/auth.dart';
-import 'package:hospital_management_app/screens/appointments_screen.dart';
-import 'package:hospital_management_app/screens/auth/login.dart';
-import 'package:hospital_management_app/screens/patients_screen.dart';
+import '../provider/auth.dart';
+import '../screens/appointments_screen.dart';
+import '../screens/auth/login.dart';
+import '../screens/book_appointment.dart';
+import '../screens/patients_screen.dart';
 import 'package:provider/provider.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -48,6 +49,9 @@ class AppDrawer extends StatelessWidget {
           ),
           Divider(),
           ListTile(
+            onTap: () {
+              Navigator.pushNamed(context, BookAppointment.routeName);
+            },
             leading: Icon(Icons.book_rounded),
             title: Text("Book Appointment",
                 style: GoogleFonts.openSans(

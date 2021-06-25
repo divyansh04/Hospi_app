@@ -21,7 +21,7 @@ void main() async {
   await SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-  NetworkEngine.baseUrl = ""; //TODO
+  NetworkEngine.baseUrl = "https://hospiti.pythonanywhere.com/api/";
 
   // await Firebase.initializeApp();
 
@@ -63,7 +63,6 @@ class MyApp extends StatelessWidget {
                 PatientScreen.routeName: (context) => PatientScreen(),
                 AppointmentScreen.routeName: (context) => AppointmentScreen(),
               }
-              // TODO : Add Routes
               ),
         ));
   }

@@ -36,7 +36,7 @@ class Patients with ChangeNotifier {
     // ];
     // _patients = mockPatients;
 
-    final url = "https://hospiti.pythonanywhere.com/api/patients/";
+    final url = "patients/";
     List<Patient> loadedPatients = [];
     try {
       final response = await NetworkEngine().dio.get(url);
@@ -51,4 +51,64 @@ class Patients with ChangeNotifier {
       throw (error);
     }
   }
+
+  Future<bool> addPatient({
+    @required String name,
+    @required String gender,
+    @required String age,
+    @required String phone,
+    @required String address,
+    @required String ailment,
+    @required String amount,
+  }) async {
+    const url = "patientappointment/";
+
+    try {
+      final response = await NetworkEngine().dio.post(url, data: {
+        "doctorid": 455,
+        "doctor name": "makmak",
+        "name": name,
+        "gender": gender,
+        "age": int.parse(age),
+        "phone number": int.parse(phone),
+        "address": address,
+        "ailment": ailment,
+        "amount": amount,
+      });
+
+      notifyListeners();
+      if (response.data == "appointment data saved successfully") {
+        return true;
+        
+      }
+      else{return false;}
+
+    } catch (e) {
+      throw (e);
+    }
+  }
 }
+
+// var data = await FirebaseFirestore.instance.collection('airline').get();
+//       data.docs.forEach((element) {
+//         AirlineTileObject tileObject =
+//             AirlineTileObject.fromJson(element.data());
+//         if (tileObject.active) airlineObject.add(tileObject);
+//       });
+
+//  Reference reference = (FirebaseStorage.instance)
+//             .ref()
+//             .child("flyzyGoApp")
+//             .child("passengerDocs")
+//             .child("boardingPass")
+//             .child(name);
+//         UploadTask uploadTask = reference.putData(asset);
+//         uploadTask.snapshotEvents.listen((event) {
+//           if (event.state == TaskState.running) {
+//             // print('listener: file at $i  ${event.snapshot.bytesTransferred / event.snapshot.totalByteCount}');
+//             onProgressChanged(
+//                 i,
+//                 event.bytesTransferred / event.totalBytes * 100,
+//                 flight.flightId);
+//           }
+//         });

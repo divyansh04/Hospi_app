@@ -16,7 +16,7 @@ class Appointments with ChangeNotifier {
   }
 
   Future<void> fetchAppointments() async {
-    final url = "https://hospiti.pythonanywhere.com/api/appointments/";
+    final url = "appointments/";
     List<AppointmentModel> loadedAppointments = [];
     try {
       final response = await NetworkEngine().dio.get(url);

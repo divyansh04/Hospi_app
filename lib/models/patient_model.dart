@@ -12,6 +12,8 @@ class Patient {
     this.age,
     this.phone,
     this.address,
+    // this.ailment,
+    // this.amount
   });
 
   String id;
@@ -19,6 +21,8 @@ class Patient {
   String gender;
   int age;
   int phone;
+  // String ailment;
+  // String amount;
   String address;
 
   factory Patient.fromJson(Map<String, dynamic> json) => Patient(
@@ -28,6 +32,8 @@ class Patient {
         age: json["age"],
         phone: json["phone number"],
         address: json["address"],
+        // ailment: json["ailment"] ?? null,
+        // amount: json["amount"] ?? null,
       );
 
   Map<String, dynamic> toJson() => {
@@ -37,5 +43,7 @@ class Patient {
         "age": age,
         "phone number": phone,
         "address": address,
+        // "ailment": ailment,
+        // "amount": amount,
       };
 }

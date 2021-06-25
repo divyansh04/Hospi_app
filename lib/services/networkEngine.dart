@@ -1,6 +1,3 @@
-
-
-
 import 'package:dio/dio.dart';
 
 import 'network_interceptor.dart';
@@ -16,7 +13,7 @@ class NetworkEngine {
 
   Dio get dio {
     BaseOptions options = new BaseOptions(
-      // baseUrl: baseUrl,
+      baseUrl: baseUrl,
       connectTimeout: 120000,
       receiveTimeout: 120000,
     );
@@ -26,7 +23,7 @@ class NetworkEngine {
     return dio;
   }
 
-  addInterceptor(Dio dio){
+  addInterceptor(Dio dio) {
     dio.interceptors.add(NetworkInterceptors());
   }
 }

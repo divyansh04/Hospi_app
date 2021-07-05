@@ -27,7 +27,7 @@ class _GenderSelectorState extends State<GenderSelector> {
         itemCount: genders.length,
         itemBuilder: (context, index) {
           return InkWell(
-            splashColor: Colors.pinkAccent,
+            splashColor: Colors.blue,
             onTap: () {
               setState(() {
                 genders.forEach((gender) => gender.isSelected = false);
@@ -49,7 +49,7 @@ class CustomRadio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        color: _gender.isSelected ? Color(0xFF3B4257) : Colors.white,
+        color: _gender.isSelected ? Colors.blue : Colors.white,
         child: Container(
           height: 80,
           width: 80,

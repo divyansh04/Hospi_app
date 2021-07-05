@@ -77,12 +77,11 @@ class Patients with ChangeNotifier {
       });
 
       notifyListeners();
-      if (response.data == "appointment data saved successfully") {
+      if (response.data['mssg'] == "appointment data saved successfully") {
         return true;
-        
+      } else {
+        return false;
       }
-      else{return false;}
-
     } catch (e) {
       throw (e);
     }

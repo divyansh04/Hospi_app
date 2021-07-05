@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../book_appointment.dart';
 
 class SubmittedPopUp extends StatefulWidget {
   @override
@@ -36,9 +37,9 @@ class SubmittedPopUpState extends State<SubmittedPopUp>
           child: ClipRRect(
             borderRadius: BorderRadius.circular(15.0),
             child: Container(
-                // margin: EdgeInsets.all(20.0),
-                // padding: EdgeInsets.all(15.0),
-                height: 470.0,
+                margin: EdgeInsets.all(20.0),
+                padding: EdgeInsets.all(15.0),
+                height: 200,
                 decoration: ShapeDecoration(
                   color: Colors.white,
                   shape: RoundedRectangleBorder(
@@ -50,70 +51,42 @@ class SubmittedPopUpState extends State<SubmittedPopUp>
                     Container(
                       padding: EdgeInsets.symmetric(vertical: 8),
                       width: double.infinity,
-                      color: Colors.brown,
+                      color: Colors.white,
                       child: Center(
                           child: Text(
-                        'SUbmitted',
-                        style: TextStyle(color: Colors.white, fontSize: 16.0),
+                        'Submitted',
+                        style: TextStyle(color: Colors.black, fontSize: 20.0),
                       )),
                     ),
                     SizedBox(
                       height: 16,
                     ),
-                    Container(
-                      height: 40,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Container(
-                            height: 40,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    bottomRight: Radius.circular(5)),
-                                border:
-                                    Border.all(color: Colors.orange, width: 1),
-                                color: Colors.white),
-                            width: MediaQuery.of(context).size.width / 2,
-                            child: FlatButton(
-                              color: Colors.orange,
-                              splashColor: Colors.white.withAlpha(40),
-                              child: Text(
-                                'Logout',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13.0),
-                              ),
-                              onPressed: () {},
-                            ),
-                          ),
-                          Container(
-                            height: 40,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                    bottomLeft: Radius.circular(5)),
-                                border:
-                                    Border.all(color: Colors.orange, width: 1),
-                                color: Colors.white),
-                            width: MediaQuery.of(context).size.width / 2,
-                            child: FlatButton(
-                              color: Colors.white,
-                              splashColor: Colors.white.withAlpha(40),
-                              child: Text(
-                                'Cancel',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.orange,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 13.0),
-                              ),
-                              onPressed: () {},
-                            ),
-                          ),
-                        ],
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(25, 10, 25, 10),
+                      child: Text(
+                        "Patient Saved Successfully. Select the patient from Registered Patients to book appointment",
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 3,
                       ),
-                    )
+                    ),
+                    MaterialButton(
+                      color: Colors.blue.shade600,
+                      splashColor: Colors.white.withAlpha(40),
+                      child: Text(
+                        'Continue',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 13.0),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                        Navigator.of(context)
+                            .pushReplacementNamed(BookAppointment.routeName);
+                      },
+                    ),
                   ],
                 )),
           ),

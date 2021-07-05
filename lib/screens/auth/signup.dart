@@ -40,7 +40,6 @@ class _SignUpState extends State<SignUp> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        color: Theme.of(context).primaryColor,
         child: Form(
           key: _formKey,
           child: Stack(

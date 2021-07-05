@@ -36,7 +36,6 @@ class _LoginState extends State<Login> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        color: Theme.of(context).primaryColor,
         child: Form(
           key: _formKey,
           child: Stack(

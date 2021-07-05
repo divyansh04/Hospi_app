@@ -59,7 +59,7 @@ class Patients with ChangeNotifier {
     @required String phone,
     @required String address,
     @required String ailment,
-    @required String amount,
+    @required int amount,
   }) async {
     const url = "patientappointment/";
 

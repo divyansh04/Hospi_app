@@ -30,6 +30,7 @@ class _BookAppointmentState extends State<BookAppointment> {
   TextEditingController _age = TextEditingController();
   TextEditingController _address = TextEditingController();
   TextEditingController _ailment = TextEditingController();
+  int amt = 0;
 
   final FocusScopeNode _node = FocusScopeNode();
   String gender;
@@ -428,6 +429,7 @@ class _BookAppointmentState extends State<BookAppointment> {
                     onPressed: () async {
                       if (_formKey.currentState.validate()) {
                         _formKey.currentState.save();
+                        amt = int.parse(_amount.text);
                         if (gender == null || gender.isEmpty) {
                           ScaffoldMessenger.of(context).showSnackBar(
                               SnackBar(content: Text('Select Gender')));
@@ -448,7 +450,7 @@ class _BookAppointmentState extends State<BookAppointment> {
                                   address: _address.text,
                                   age: _age.text,
                                   ailment: _ailment.text,
-                                  amount: _amount.text,
+                                  amount: amt,
                                   gender: gender.toUpperCase(),
                                   name: _name.text,
                                   phone: _phone.text);

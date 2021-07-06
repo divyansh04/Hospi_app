@@ -4,6 +4,7 @@ import '../models/patient_model.dart';
 import 'package:provider/provider.dart';
 
 class PatientDetails extends StatefulWidget {
+  static const routeName = '/PatientDetails';
   const PatientDetails({Key key, @required this.patient}) : super(key: key);
   final Patient patient;
 

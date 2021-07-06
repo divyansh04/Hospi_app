@@ -1,8 +1,7 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:hospital_management_app/models/patient_model.dart';
-import 'package:hospital_management_app/services/networkEngine.dart';
+import '../models/patient_model.dart';
+import '../services/networkEngine.dart';
+// import 'dart:convert';
 // import 'package:http/http.dart' as http;
 // import '../models/http_exception.dart';
 

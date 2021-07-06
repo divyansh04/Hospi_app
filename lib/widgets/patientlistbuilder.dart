@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hospital_management_app/models/patient_model.dart';
-import 'package:hospital_management_app/screens/patient_details.dart';
+import '../models/patient_model.dart';
+import '../screens/appointment_slot.dart';
+import '../screens/patient_details.dart';
 
 class PatientListBuilder extends StatelessWidget {
   @required
@@ -34,7 +35,12 @@ class PatientListBuilder extends StatelessWidget {
                       MaterialPageRoute(
                           builder: (context) =>
                               PatientDetails(patient: displayPatients[index])));
-                }
+                } else
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AppointmentSlot(
+                              patient: displayPatients[index])));
               },
               leading: Icon(
                 Icons.person,

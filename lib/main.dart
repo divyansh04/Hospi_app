@@ -54,16 +54,16 @@ class MyApp extends StatelessWidget {
                 primaryColor: Color(0xFF2684fe),
                 textTheme: GoogleFonts.muliTextTheme(),
               ),
-              home: HomeScreen(),
+              home: MyHomePage(), //HomeScreen(),
               routes: {
                 Login.routeName: (context) => Login(),
                 SignUp.routeName: (context) => SignUp(),
                 HomeScreen.routeName: (context) => HomeScreen(),
+                MyHomePage.routeName: (context) => MyHomePage(),
                 BookAppointment.routeName: (context) => BookAppointment(),
                 PatientScreen.routeName: (context) => PatientScreen(),
                 AppointmentScreen.routeName: (context) => AppointmentScreen(),
-              }
-              ),
+              }),
         ));
   }
 }

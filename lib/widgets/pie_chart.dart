@@ -19,9 +19,9 @@ class PieChart2State extends State {
         color: Colors.white,
         child: Row(
           children: <Widget>[
-            const SizedBox(
-              height: 18,
-            ),
+            // const SizedBox(
+            //   height: 18,
+            // ),
             Expanded(
               child: AspectRatio(
                 aspectRatio: 1,
@@ -47,48 +47,48 @@ class PieChart2State extends State {
                 ),
               ),
             ),
-            Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.end,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const <Widget>[
-                Indicator(
-                  color: Color(0xff0293ee),
-                  text: 'First',
-                  isSquare: true,
-                ),
-                SizedBox(
-                  height: 4,
-                ),
-                Indicator(
-                  color: Color(0xfff8b250),
-                  text: 'Second',
-                  isSquare: true,
-                ),
-                SizedBox(
-                  height: 4,
-                ),
-                Indicator(
-                  color: Color(0xff845bef),
-                  text: 'Third',
-                  isSquare: true,
-                ),
-                SizedBox(
-                  height: 4,
-                ),
-                Indicator(
-                  color: Color(0xff13d38e),
-                  text: 'Fourth',
-                  isSquare: true,
-                ),
-                SizedBox(
-                  height: 18,
-                ),
-              ],
-            ),
-            const SizedBox(
-              width: 28,
-            ),
+            // Column(
+            //   mainAxisSize: MainAxisSize.max,
+            //   mainAxisAlignment: MainAxisAlignment.end,
+            //   crossAxisAlignment: CrossAxisAlignment.start,
+            //   children: const <Widget>[
+            //     Indicator(
+            //       color: Color(0xff0293ee),
+            //       text: 'First',
+            //       isSquare: true,
+            //     ),
+            //     SizedBox(
+            //       height: 4,
+            //     ),
+            //     Indicator(
+            //       color: Color(0xfff8b250),
+            //       text: 'Second',
+            //       isSquare: true,
+            //     ),
+            //     SizedBox(
+            //       height: 4,
+            //     ),
+            //     Indicator(
+            //       color: Color(0xff845bef),
+            //       text: 'Third',
+            //       isSquare: true,
+            //     ),
+            //     SizedBox(
+            //       height: 4,
+            //     ),
+            //     Indicator(
+            //       color: Color(0xff13d38e),
+            //       text: 'Fourth',
+            //       isSquare: true,
+            //     ),
+            //     SizedBox(
+            //       height: 18,
+            //     ),
+            //   ],
+            // ),
+            // const SizedBox(
+            //   width: 28,
+            // ),
           ],
         ),
       ),

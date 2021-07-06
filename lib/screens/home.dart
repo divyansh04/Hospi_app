@@ -3,6 +3,7 @@ import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hospital_management_app/widgets/indicator.dart';
 import 'package:hospital_management_app/widgets/pie_chart.dart';
 import '../provider/auth.dart';
 import '../provider/patients.dart';
@@ -103,15 +104,18 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                     ),
                   ),
-                  // Padding(
-                  //   padding: EdgeInsets.all(8.0),
-                  //   child: PieChartSample(),
-                  //   //  AnimatedCircularChart(
-                  //   //   size: const Size(100.0, 100.0),
-                  //   //   initialChartData: circularData,
-                  //   //   chartType: CircularChartType.Pie,
-                  //   // ),
-                  // ),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child:
+                          Transform.scale(scale: 0.5, child: PieChartSample()),
+                      //  AnimatedCircularChart(
+                      //   size: const Size(100.0, 100.0),
+                      //   initialChartData: circularData,
+                      //   chartType: CircularChartType.Pie,
+                      // ),
+                    ),
+                  ),
                 ],
               ),
             ],
@@ -281,6 +285,41 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
+              child: Material(
+                color: Colors.white,
+                elevation: 14.0,
+                borderRadius: BorderRadius.circular(24.0),
+                shadowColor: Color(0x802196F3),
+                child: Center(
+                    child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Indicator(
+                      color: Color(0xff0293ee),
+                      text: 'First',
+                      isSquare: true,
+                    ),
+                    Indicator(
+                      color: Color(0xfff8b250),
+                      text: 'Second',
+                      isSquare: true,
+                    ),
+                    Indicator(
+                      color: Color(0xff845bef),
+                      text: 'Third',
+                      isSquare: true,
+                    ),
+                    Indicator(
+                      color: Color(0xff13d38e),
+                      text: 'Fourth',
+                      isSquare: true,
+                    ),
+                  ],
+                )),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child: mychart2Items("Conversion", "0.9M", "+19% of target"),
             ),
           ],
@@ -289,6 +328,7 @@ class _MyHomePageState extends State<MyHomePage> {
             StaggeredTile.extent(2, 250.0),
             StaggeredTile.extent(2, 120.0),
             StaggeredTile.extent(2, 120.0),
+            StaggeredTile.extent(4, 50.0),
             StaggeredTile.extent(4, 250.0),
           ],
         ),

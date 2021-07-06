@@ -17,7 +17,10 @@
 //     DocumentReference documentReference =
 //         FirebaseFirestore.instance.collection(ADMITTED_TABLE).doc(); //. get();
 //     documentReference.snapshots().listen((event) {
-//       event.data().forEach((key, value) {});
+//       event.data().forEach((key, value) {
+// 
+// 
+// });
 //     });
 //   }
 // }

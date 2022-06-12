@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hospital_management_app/models/http_exception.dart';
 import 'package:hospital_management_app/provider/auth.dart';
-import 'package:hospital_management_app/screens/home.dart';
 import 'package:provider/provider.dart';
 
 class SignUp extends StatefulWidget {

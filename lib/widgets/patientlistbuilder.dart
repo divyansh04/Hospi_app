@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hospital_management_app/models/patient_model.dart';
-import 'package:hospital_management_app/screens/patient_details.dart';
+import 'package:hospital_management_app/screens/Admin_Dashboard_Screens/patient_details.dart';
 
 class PatientListBuilder extends StatelessWidget {
   @required

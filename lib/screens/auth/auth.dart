@@ -3,8 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hospital_management_app/screens/auth/widgets/register.dart';
 import 'package:hospital_management_app/screens/auth/widgets/sign_in.dart';
-import 'package:hospital_management_app/config/palette.dart';
-import 'package:hospital_management_app/screens/home.dart';
 
 import 'widgets/background_painter.dart';
 

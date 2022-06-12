@@ -47,7 +47,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
         title: Text('Appointments',
             style: GoogleFonts.openSans(color: Colors.white, fontSize: 20)),
       ),
-      drawer: AppDrawer(),
+      // drawer: AppDrawer(),
       body: ListView(
         children: [
           // Add Filter Widget

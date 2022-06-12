@@ -3,27 +3,26 @@ import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hospital_management_app/provider/auth.dart';
 import 'package:hospital_management_app/widgets/indicator.dart';
 import 'package:hospital_management_app/widgets/pie_chart.dart';
-import '../provider/auth.dart';
-import '../provider/patients.dart';
 import 'package:hospital_management_app/screens/auth/login.dart';
 import 'package:hospital_management_app/widgets/drawer.dart';
 import 'package:provider/provider.dart';
 // import 'auth/auth.dart';
 
-class MyHomePage extends StatefulWidget {
+class HomeScreenAnalytics extends StatefulWidget {
   static const routeName = '/myhomescreen';
-  const MyHomePage({Key key}) : super(key: key);
+  const HomeScreenAnalytics({Key key}) : super(key: key);
 
   static MaterialPageRoute get route => MaterialPageRoute(
-        builder: (context) => const MyHomePage(),
+        builder: (context) => const HomeScreenAnalytics(),
       );
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _HomeScreenAnalyticsState createState() => _HomeScreenAnalyticsState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _HomeScreenAnalyticsState extends State<HomeScreenAnalytics> {
   var data = [0.0, 0.0, 0.0, 2.0, 0.0, 0.0, -0.5, -1.0, -0.5, 0.0, 0.0];
   var data1 = [0.0, -2.0, 3.5, -2.0, 0.5, 0.7, 0.8, 1.0, 2.0, 3.0, 3.2];
 

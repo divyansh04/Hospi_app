@@ -17,19 +17,33 @@ class Appointments with ChangeNotifier {
 
   Future<void> fetchAppointments() async {
     final url = "appointments/";
-    List<AppointmentModel> loadedAppointments = [];
-    try {
-      final response = await NetworkEngine().dio.get(url);
-      List<dynamic> data = response.data;
+    List<AppointmentModel> loadedAppointments = [
+      AppointmentModel(
+        ailment: 'n a',
+        amount: '300',
+        date: DateTime(2021, 12, 12, 12, 12),
+        doctorName: 'Dr. jon',
+        doctorid: '984651odkfve',
+        id: '646484',
+        patientName: 'root',
+        patientid: '48646465sx',
+      )
+    ];
+    _appointments = loadedAppointments;
+    notifyListeners();
 
-      data.forEach((element) {
-        loadedAppointments.add(AppointmentModel.fromJson(element));
-      });
-      _appointments = loadedAppointments;
-      notifyListeners();
-    } catch (error) {
-      throw (error);
-    }
+    // try {
+    //   final response = await NetworkEngine().dio.get(url);
+    //   List<dynamic> data = response.data;
+
+    //   data.forEach((element) {
+    //     loadedAppointments.add(AppointmentModel.fromJson(element));
+    //   });
+    //   _appointments = loadedAppointments;
+    //   notifyListeners();
+    // } catch (error) {
+    //   throw (error);
+    // }
   }
 
   Map<String, List<AppointmentModel>> fetchAppointmentsMap() {

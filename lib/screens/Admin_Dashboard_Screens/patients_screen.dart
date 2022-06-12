@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hospital_management_app/models/patient_model.dart';
+import 'package:hospital_management_app/provider/patients.dart';
 import 'package:hospital_management_app/widgets/patientlistbuilder.dart';
-import '../provider/patients.dart';
-import '../widgets/drawer.dart';
 import 'package:provider/provider.dart';
 
 class PatientScreen extends StatefulWidget {
@@ -45,7 +44,7 @@ class _PatientScreenState extends State<PatientScreen> {
           title: Text('Patients',
               style: GoogleFonts.openSans(color: Colors.white, fontSize: 20)),
         ),
-        drawer: AppDrawer(),
+        // drawer: AppDrawer(),
         body: ListView(
           children: [
             Padding(

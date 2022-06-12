@@ -18,38 +18,39 @@ class Patients with ChangeNotifier {
   }
 
   Future<void> fetchPatients() async {
-    // List<Patient> mockPatients = [
-    //   new Patient(
-    //       address: "Near Madhu Hotel",
-    //       age: 78,
-    //       gender: "MALE",
-    //       id: "ill man1622744854",
-    //       name: "ill man",
-    //       phone: "7458963210"),
-    //   new Patient(
-    //       address: "Yamuna Nagar",
-    //       age: 41,
-    //       gender: "Male",
-    //       id: "first",
-    //       name: "someone",
-    //       phone: "4125638549")
-    // ];
-    // _patients = mockPatients;
+    List<Patient> mockPatients = [
+      new Patient(
+          address: "Near Madhu Hotel",
+          age: 78,
+          gender: "MALE",
+          id: "ill man1622744854",
+          name: "ill man",
+          phone: 7458963210),
+      new Patient(
+          address: "Yamuna Nagar",
+          age: 41,
+          gender: "Male",
+          id: "first",
+          name: "someone",
+          phone: 4125638549)
+    ];
+    _patients = mockPatients;
+    notifyListeners();
 
-    final url = "patients/";
-    List<Patient> loadedPatients = [];
-    try {
-      final response = await NetworkEngine().dio.get(url);
-      List<dynamic> data = response.data;
+    // final url = "patients/";
+    // List<Patient> loadedPatients = [];
+    // try {
+    //   final response = await NetworkEngine().dio.get(url);
+    //   List<dynamic> data = response.data;
 
-      data.forEach((element) {
-        loadedPatients.add(Patient.fromJson(element));
-      });
-      _patients = loadedPatients;
-      notifyListeners();
-    } catch (error) {
-      throw (error);
-    }
+    //   data.forEach((element) {
+    //     loadedPatients.add(Patient.fromJson(element));
+    //   });
+    //   _patients = loadedPatients;
+    //   notifyListeners();
+    // } catch (error) {
+    //   throw (error);
+    // }
   }
 
   Future<bool> addPatient({
@@ -62,29 +63,43 @@ class Patients with ChangeNotifier {
     @required String amount,
   }) async {
     const url = "patientappointment/";
+    int id = 11;
+    _patients.add(
+      Patient(
+          address: address,
+          age: int.parse(age),
+          gender: gender,
+          id: id.toString(),
+          name: name,
+          phone: int.parse(phone)),
+    );
+    id++;
+    notifyListeners();
 
-    try {
-      final response = await NetworkEngine().dio.post(url, data: {
-        "doctorid": 455,
-        "doctor name": "makmak",
-        "name": name,
-        "gender": gender,
-        "age": int.parse(age),
-        "phone number": int.parse(phone),
-        "address": address,
-        "ailment": ailment,
-        "amount": amount,
-      });
+    return true;
 
-      notifyListeners();
-      if (response.data == "appointment data saved successfully") {
-        return true;
-      } else {
-        return false;
-      }
-    } catch (e) {
-      throw (e);
-    }
+    // try {
+    //   final response = await NetworkEngine().dio.post(url, data: {
+    //     "doctorid": 455,
+    //     "doctor name": "makmak",
+    //     "name": name,
+    //     "gender": gender,
+    //     "age": int.parse(age),
+    //     "phone number": int.parse(phone),
+    //     "address": address,
+    //     "ailment": ailment,
+    //     "amount": amount,
+    //   });
+
+    //   notifyListeners();
+    //   if (response.data == "appointment data saved successfully") {
+    //     return true;
+    //   } else {
+    //     return false;
+    //   }
+    // } catch (e) {
+    //   throw (e);
+    // }
   }
 }
 

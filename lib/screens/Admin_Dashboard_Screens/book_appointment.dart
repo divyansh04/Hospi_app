@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../provider/patients.dart';
-import '../widgets/patientlistbuilder.dart';
-import '../models/patient_model.dart';
-import '../widgets/drawer.dart';
+import 'package:hospital_management_app/models/patient_model.dart';
+import 'package:hospital_management_app/provider/patients.dart';
+import 'package:hospital_management_app/screens/auth/widgets/custom_radio.dart';
+import 'package:hospital_management_app/screens/auth/widgets/popup.dart';
+import 'package:hospital_management_app/widgets/patientlistbuilder.dart';
 import 'package:provider/provider.dart';
-
-import 'auth/widgets/custom_radio.dart';
-import 'auth/widgets/popup.dart';
 
 class BookAppointment extends StatefulWidget {
   static const routeName = '/BookAppointment';
@@ -65,7 +63,7 @@ class _BookAppointmentState extends State<BookAppointment> {
         appBar: AppBar(
             title: Text('Book Appointment',
                 style: GoogleFonts.openSans(fontSize: 20))),
-        drawer: AppDrawer(),
+        // drawer: AppDrawer(),
         body: Container(
           height: double.infinity,
           width: double.infinity,

@@ -6,14 +6,15 @@ import '../provider/auth.dart';
 import '../provider/patients.dart';
 import '../screens/auth/login.dart';
 import '../screens/auth/signup.dart';
-import '../screens/book_appointment.dart';
-import '../screens/home.dart';
-import '../screens/patients_screen.dart';
 import '../services/networkEngine.dart';
 import 'package:provider/provider.dart';
 
 import 'provider/appointments.dart';
-import 'screens/appointments_screen.dart';
+import 'screens/Admin_Dashboard_Screens/appointments_screen.dart';
+import 'screens/Admin_Dashboard_Screens/book_appointment.dart';
+import 'screens/Admin_Dashboard_Screens/home.dart';
+import 'screens/Admin_Dashboard_Screens/patients_screen.dart';
+import 'screens/onboarding_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,14 +53,17 @@ class MyApp extends StatelessWidget {
                 visualDensity: VisualDensity.adaptivePlatformDensity,
                 primarySwatch: Colors.blue,
                 primaryColor: Color(0xFF2684fe),
-                textTheme: GoogleFonts.muliTextTheme(),
+                textTheme: GoogleFonts.varelaRoundTextTheme(
+                    Theme.of(context).textTheme),
+                // textTheme: GoogleFonts.muliTextTheme(),
               ),
-              home: MyHomePage(), //HomeScreen(),
+              home: OnboardingScreen(), //MyHomePage(), //HomeScreen(),
               routes: {
+                // OnboardingScreen.routeName: (context) => OnboardingScreen(),
                 Login.routeName: (context) => Login(),
                 SignUp.routeName: (context) => SignUp(),
                 HomeScreen.routeName: (context) => HomeScreen(),
-                MyHomePage.routeName: (context) => MyHomePage(),
+                HomeScreenAnalytics.routeName: (context) => HomeScreenAnalytics(),
                 BookAppointment.routeName: (context) => BookAppointment(),
                 PatientScreen.routeName: (context) => PatientScreen(),
                 AppointmentScreen.routeName: (context) => AppointmentScreen(),

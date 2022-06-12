@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hospital_management_app/screens/auth/auth.dart';
-import 'package:hospital_management_app/screens/home.dart';
+
+import 'Admin_Dashboard_Screens/home.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key key}) : super(key: key);

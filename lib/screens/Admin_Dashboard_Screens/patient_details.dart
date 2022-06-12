@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../models/patient_model.dart';
+import 'package:hospital_management_app/models/patient_model.dart';
 import 'package:provider/provider.dart';
 
 class PatientDetails extends StatefulWidget {

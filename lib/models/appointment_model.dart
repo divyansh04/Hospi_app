@@ -24,9 +24,9 @@ class AppointmentModel {
 
   DateTime date;
   String ailment;
-  int amount;
+  dynamic amount;
   String doctorName;
-  String doctorid;
+  dynamic doctorid;
   String id;
   String patientName;
   String patientid;

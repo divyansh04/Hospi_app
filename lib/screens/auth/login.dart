@@ -3,8 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:hospital_management_app/models/http_exception.dart';
 import 'package:hospital_management_app/provider/auth.dart';
+import 'package:hospital_management_app/screens/Admin_Dashboard_Screens/home.dart';
+import 'package:hospital_management_app/screens/Patients_Dashboard_Screens/screens/patient_home_screen.dart';
 import 'package:hospital_management_app/screens/auth/signup.dart';
-import 'package:hospital_management_app/screens/home.dart';
 import 'package:provider/provider.dart';
 
 class Login extends StatefulWidget {
@@ -66,9 +67,9 @@ class _LoginState extends State<Login> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30)),
                   elevation: 5,
-                  child: Column(
+                  child: ListView(
                     // mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    // crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
                           padding: const EdgeInsets.fromLTRB(28.0, 30, 0, 0),
@@ -192,7 +193,25 @@ class _LoginState extends State<Login> {
                                       MediaQuery.of(context).size.width - 75,
                                   onPressed: () async {
                                     if (_formKey.currentState.validate()) {
-                                      _submit();
+                                      if (_email.text.contains("doctor") ||
+                                          _email.text.contains("reception")) {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                HomeScreenAnalytics(),
+                                          ),
+                                        );
+                                      } else {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                PatientHomeScreen(),
+                                          ),
+                                        );
+                                      }
+                                      // _submit();
                                     }
                                   },
                                   child: Text(

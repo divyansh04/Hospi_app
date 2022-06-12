@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hospital_management_app/screens/Admin_Dashboard_Screens/appointments_screen.dart';
+import 'package:hospital_management_app/screens/Admin_Dashboard_Screens/book_appointment.dart';
+import 'package:hospital_management_app/screens/Admin_Dashboard_Screens/patients_screen.dart';
 import '../provider/auth.dart';
-import '../screens/appointments_screen.dart';
 import '../screens/auth/login.dart';
-import '../screens/book_appointment.dart';
-import '../screens/patients_screen.dart';
 import 'package:provider/provider.dart';
 
 class AppDrawer extends StatelessWidget {
